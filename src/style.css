@@ -1,0 +1,27 @@
+.appHeader{
+    background: purple;
+    height: 50px;
+    position: sticky;
+    top:0;
+}
+.appHeader>h1{
+    text-align: center;
+    color: white;
+    line-height: 50px;
+    margin: 0;
+} 
+.moviesContainer{
+    display: flex;  
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.appHeader>.searchBox{
+    float: unset
+}
+.paginationContainer{
+    padding-left: 75%;
+    margin: 20px;
+    align-items: center;
+    justify-content: center; 
+}
