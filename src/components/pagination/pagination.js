@@ -1,11 +1,15 @@
 import React from "react";
 import './pagination.css';
 
-const Pagination = () => {
+function handleClick(){
+console.log("hola")
+}
+
+const Pagination = (props) => {
   return (
     <div className="pagination">
       <a href="#">&laquo;</a>
-      <a href="#">1</a>
+      <a href="#" onClick={handleClick}>1</a>
       <a className="active" href="#">
         2
       </a>

@@ -1,7 +1,23 @@
 .movieContainer{
     padding: 20px;
     margin: 10px;
-    background: rgb(192, 177, 192);
-    width: 250px;
+    display: flex;
 }
+.movieInlineFlex {
+    margin-top: 24px;
+    display: flex;
+}
+.movieCardBlock {
+    display: flex;
+    width: 160px;
+    margin: 16px 8px;
+    background: rgb(192, 177, 192);
+    padding:24px 16px;
+    flex-direction: column;
+    flex-grow: 100;
+    flex-shrink: 50;
+}
+.movieImgBlock {display: flex; align-items: center; justify-content: center; width: 100px; height: 100px;}
+.movieImgBlock img {width: 100px; height: 100px;}
+.movieTextBlock {display: flex; flex-direction: column; padding: 24px 16px;}
 

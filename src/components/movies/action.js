@@ -16,13 +16,14 @@ function setMoviesData(data){
 }
 
 
-export function fetchPopularMovieList(){
+export function fetchPopularMovieList(page){
     return dispatch =>{
             dispatch(setFetchPending(true));
-            callfetchPopularMovieList((response)=>{
+            console.log("page in action",page)
+            callfetchPopularMovieList(page,(response)=>{
                 if(response){
                     dispatch(setFetchPending(false));
-                    console.log("response",response)
+                    //console.log("response",page,response)
                     dispatch(setMoviesData(JSON.parse(response)))
                 }
                 else{
