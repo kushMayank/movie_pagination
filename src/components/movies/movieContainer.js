@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Movies from "./movies.js";
-import { fetchPopularMovieList } from "./action";
+import { fetchPopularMovieList, fetchSearchMovieList } from "./action";
 import "./movies.css";
 import Loader from "../commons/loader";
 
@@ -10,15 +10,44 @@ class MovieContainer extends React.Component {
     super(props);
     this.state = {
       isLoading: false,
-      page: 1
+      page: 1,
+      movieName: "",
+      errorMessage: ""
     };
   }
   componentDidMount() {
     this.props.fetchPopularMovieList(this.state.page);
   }
 
+  handleChange(e) {
+    console.log("e.target.value", e.target.value);
+    this.setState({
+      movieName: e.target.value,
+      errorMessage: ""
+    });
+  }
+
+  handleSearch(e) {
+    console.log("here in the handleSearch", this);
+    if (this.state.movieName.trim() !== "") {
+      this.props.fetchSearchMovieList(this.state.movieName);
+      this.setState({
+        errorMessage: ""
+      });
+    } else {
+      this.setState({
+        errorMessage: "Please enter the key"
+      });
+    }
+  }
+
+  handleHome = () => {
+    console.log("handle go to home ");
+    this.props.fetchPopularMovieList(this.state.page);
+  };
+
   handleNext() {
-    console.log("here in the handleNext", this.state.page);
+    console.log("this in hanld eNext", this);
     this.setState({
       page: this.state.page + 1
     });
@@ -36,7 +65,6 @@ class MovieContainer extends React.Component {
 
   render() {
     var movieList = this.props.movies;
-    console.log("mpovie list", movieList.length);
     return (
       <div className="movieContainer">
         <button onClick={e => this.handleNext(e)}>next</button>
@@ -46,15 +74,28 @@ class MovieContainer extends React.Component {
         >
           previous
         </button>
+        <div className="search">
+          <h4>Search</h4>
+          <input
+            onChange={e => this.handleChange(e)}
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Enter the Movie Name"
+          />
+          <span className="errorMessage">{this.state.errorMessage}</span>
+          <button onClick={e => this.handleSearch(e)}>Submit</button>
+        </div>
         <div className="movieInlineFlex">
           {this.props.isLoading ? (
             <Loader />
-          ) : (
+          ) : movieList.length > 0 ? (
             movieList.map((props, i) => <Movies key={i} {...props} />)
+          ) : (
+            <div className="noData">
+              No Data <span onClick={this.handleHome}>click me go Home</span>
+            </div>
           )}
-          {/* {movieList.map((props, i) => (
-            <Movies key={i} {...props} />
-          ))} */}
         </div>
       </div>
     );
@@ -70,7 +111,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchPopularMovieList: page => dispatch(fetchPopularMovieList(page))
+    fetchPopularMovieList: page => dispatch(fetchPopularMovieList(page)),
+    fetchSearchMovieList: query => dispatch(fetchSearchMovieList(query))
   };
 };
 

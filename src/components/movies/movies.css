@@ -3,6 +3,17 @@
     margin: 10px;
     display: flex;
 } */
+.errorMessage {
+  color: red;
+}
+.noData {
+  color: rgb(255, 38, 0);
+}
+
+.noData > span {
+  color: blue;
+}
+
 .movieInlineFlex {
   margin-top: 24px;
   display: flex;

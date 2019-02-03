@@ -31,6 +31,12 @@ const movieReducer = (state = initialState, action) => {
         totalPages: action.data.total_pages
       };
 
+    case "SET_SEARCH_DATA":
+      return {
+        ...state,
+        movieList: action.data.results
+      };
+
     default:
       return state;
   }
