@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 // import Movie from "./components/movies/movies";
-import MoviesContainer from './components/movies/movieContainer'
+import MoviesContainer from "./components/movies/movieContainer";
 import Search from "./components/search/search";
 import PaginationContainer from "./components/pagination/paginationContainer";
 import "./style.css";
 
 class App extends Component {
-
-  
   render() {
     return (
       <div className="App">
@@ -19,11 +17,11 @@ class App extends Component {
           </div>
         </div> */}
         <div className="moviesContainer">
-          <MoviesContainer/>
+          <MoviesContainer />
         </div>
-        {/* <div className="paginationContainer">
+        <div className="paginationContainer">
           <PaginationContainer />
-        </div> */}
+        </div>
       </div>
     );
   }
