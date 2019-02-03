@@ -2,7 +2,6 @@ import {
   callfetchPopularMovieList,
   callfetchSearchMovieList
 } from "./service.js";
-import { SET_LOADING } from "./constant";
 
 function setFetchPending(isLoading) {
   return {

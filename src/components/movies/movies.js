@@ -7,7 +7,7 @@ const movies = props => {
       <div className="movieImgBlock">
         <img
           src={`http://image.tmdb.org/t/p/w342/${props.poster_path}`}
-          alt="Card image cap"
+          alt="Card img cap"
         />
       </div>
       <div className="movieTextBlock">

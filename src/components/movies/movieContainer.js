@@ -74,6 +74,10 @@ class MovieContainer extends React.Component {
         >
           previous
         </button>
+        <div>
+          {" "}
+          Showing Page {this.state.page} of {this.props.totelPages}
+        </div>
         <div className="search">
           <h4>Search</h4>
           <input
@@ -105,7 +109,8 @@ class MovieContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     movies: state.movieReducer.movieList,
-    isLoading: state.movieReducer.isLoading
+    isLoading: state.movieReducer.isLoading,
+    totelPages: state.movieReducer.totalPages
   };
 };
 
